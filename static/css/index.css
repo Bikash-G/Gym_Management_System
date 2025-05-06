@@ -1,0 +1,159 @@
+.main {
+    height: 100vh;
+    width: 100%;
+}
+
+.imgset {
+    height: 100vh;
+    width: 100%;
+    
+}
+
+
+footer .footer-container {
+    height: 200px;
+    background-color: #222;
+}
+.social-links {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-size: 1em;
+}
+
+.social-links a i {
+    color: #000;
+    padding: 5px;
+    background-color: #fff;
+    opacity: 0.5;
+    border-radius: 20%;
+}
+
+.social-links a i:hover {
+    opacity: 1;
+}
+
+.site-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    font-size: 0.9em;
+}
+
+.site-links ul li {
+    display: inline;
+}
+
+.site-links ul li a {
+    text-decoration: none;
+    color: white;
+    margin-right: 1.3em;
+}
+
+.site-links ul li a:hover {
+    color: rgb(95, 95, 248);
+    text-decoration: underline;
+}
+.feedback{
+    width: 100%;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    font-size: 0.9em;
+    
+}
+.feedback button{
+    opacity: 0.5;
+}
+ 
+.feedback button:hover{
+    opacity: 1;
+}
+.footer-bottom {
+    height: 50px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    line-height: 50px;
+}
+
+.owner {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.owner:hover {
+    opacity: 1;
+}
+
+@media(max-width:1200px){
+    .main-container {
+        width: 70%;
+    }
+
+    .main {
+        height: 80vh;
+    }
+    .imgset {
+        height: 80vh;
+    }
+}
+
+@media(max-width:1000px){
+    .main-container {
+        width: 70%;
+    }
+
+    .main {
+        height: 80vh;
+    }
+    .imgset {
+        height: 80vh;
+    }
+}
+
+@media(max-width:850px){
+    .main {
+        height: 70vh;
+    }
+    .imgset {
+        height: 70vh;
+    }
+}
+
+@media(max-width:680px){
+    /* .father {
+        margin-top: 55px;
+    } */
+    .main {
+        height: 60vh;
+    }
+    .imgset {
+        height: 60vh;
+
+    }
+}
+
+@media(max-width:500px){
+    .main {
+        height: 50vh;
+    }
+    .imgset {
+        height: 50vh;
+    }
+}
+
+@media screen and (max-width:400px){
+    .main {
+        height: 40vh;
+    }
+    .imgset {
+        height: 40vh;
+    }
+}

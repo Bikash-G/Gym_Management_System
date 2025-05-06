@@ -1,0 +1,566 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK Fitness - Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/admin_home.css" %}">
+    <link rel="icon" href="{% static "images/gym_icon.jpg" %}">
+</head>
+<body>
+    <header>
+        <h1>BK Fitness - Admin</h1>
+        <nav>
+            <ul>
+                <li><a href="#contacts">Contacts</a></li>
+                <li><a href="#members">Members</a></li>
+                <li><a href="#membership_plans">Membership Plans</a></li>
+                <li><a href="#trainers">Trainers</a></li>
+                <li><a href="#feedbacks">Feebacks</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="contacts">
+            <h2>Contacts</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone_no</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for Contact in Contacts  %}
+                    <tr>
+                        <td>{{Contact.id}}</td>
+                        <td>{{Contact.name}}</td>
+                        <td>{{Contact.email}}</td>
+                        <td>{{Contact.phone_no}}</td>
+                        <td>{{Contact.description}}</td>
+                        <td>  
+                          
+                            <a href="/delete_contact/{{Contact.id}}"><button>Delete</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section id="members">
+            <h2>Members</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Fullname</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Phone_no</th>
+                        <th>DOB</th>
+                        <th>Membership_plan</th>
+                        <th>Trainer</th>
+                        <th>Address</th>
+                        <th>Enroll_date</th>
+                        <th>End_date</th>
+                        <th>Payment_status</th>
+                        <th>Payment_amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for member in members  %}
+                    <tr>
+                        <td>{{member.id}}</td>
+                        <td>{{member.fullname}}</td>
+                        <td>{{member.email}}</td>
+                        <td>{{member.gender}}</td>
+                        <td>{{member.phone_no}}</td>
+                        <td>{{member.dob}}</td>
+                        <td>{{member.membership_plan}}</td>
+                        <td>{{member.trainer}}</td>
+                        <td>{{member.address}}</td>
+                        <td>{{member.enroll_date}}</td>
+                        <td>{{member.end_date}}</td>
+                        <td>{{member.payment_status}}</td>
+                        <td>{{member.payment_amount}}</td>
+                        <td>
+                       <a href="/edit_member/{{member.id}}"> <button type="button">  Edit </button></a>
+                        <a href="/delete_member/{{member.id}}"><button>Delete</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+               Add Members
+              </button>
+        </section>
+
+        <section id="membership_plans">
+            <h2>Membership Plans</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Plan</th>
+                        <th>Duration</th>
+                        <th>Offer</th>
+                        <th>Price</th>
+                        
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for membership_plan in membership_plans  %}
+                    <tr>
+                        <td>{{membership_plan.id}}</td>
+                        <td>{{membership_plan.plan}}</td>
+                        <td>{{membership_plan.duration}}</td>
+                        <td>{{membership_plan.offer}} % discount</td>
+                        <td> Rs {{membership_plan.price}}</td>
+                        <td>
+                            <a href="/edit_membership/{{membership_plan.id}}"> <button type="button"   >Edit</button></a>
+                            <a href="/delete_membership/{{membership_plan.id}}"><button>Delete</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                Add Plan
+               </button>
+        </section>
+
+        <section id="trainers">
+            <h2>Trainers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone_no</th>
+                        <th>Gender</th>
+                        <th>Salary</th>
+                        <th>Join_date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for Trainer in Trainers  %}
+                    <tr>
+                        <td>{{Trainer.id}}</td>
+                        <td>{{Trainer.name}}</td>
+                        <td>{{Trainer.phone_no}}</td>
+                        <td>{{Trainer.gender}}</td>
+                        <td>{{Trainer.salary}}</td>
+                        <td>{{Trainer.join_date}}</td>
+                        <td>
+                            <a href="/edit_trainer/{{Trainer.id}}"><button type="button" >Edit</button></a>
+                            <a href="/delete_trainer/{{Trainer.id}}"><button>Delete</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                Add Trainer
+               </button>
+        </section>
+
+        <section id="feedbacks">
+          <h2>Feedbacks</h2>
+          <table>
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Contact No</th>
+                      <th>Feedback</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for feedback in feedbacks  %}
+                  <tr>
+                      <td>{{feedback.id}}</td>
+                      <td>{{feedback.name}}</td>
+                      <td>{{feedback.email}}</td>
+                      <td>{{feedback.contact}}</td>
+                      <td>{{feedback.feedback}}</td>
+                      <td>
+                        <a href="/delete_feedback/{{feedback.id}}"><button>Delete</button></a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+           </section>
+    </main>
+
+
+
+  <!-- add members   Modal -->
+  <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Members</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/add_member" method="POST">
+                {% csrf_token %}
+                <h2> Welcome to BK Fitness </h2>
+        
+                <div class="form-group">
+                  <input type="text" class="form-control" name="fullname" placeholder="Enter your Full Name" required>
+                </div>
+                
+                <div class="form-group ">
+                  <input type="email" class="form-control" aria-describedby="emailHelp" name="email"  placeholder="Enter Email"   required>
+                </div>
+        
+                <div class="form-group ">
+                  <select class="custom-select" name="gender">
+                    <option selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+        
+                <div class="form-group ">
+                  <input type="number" class="form-control"  name="phone_no"   placeholder="Phone Number"   required>
+                </div>
+        
+                <div class="form-group ">
+                  <input type="text" class="form-control"  name="dob" placeholder="date of birth">
+                </div>
+        
+                <div class="form-group ">
+                  <select class="custom-select" name="membership-plan">
+                    <option selected>Select Membership Plan</option>
+                    {% for p in membership_plans %}
+                    <option value="{{p.plan}} - {{p.price}}">{{p.plan}} - Rs.{{p.price}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+        
+                <div class="form-group ">
+                  <select class="custom-select" name="trainer">
+                    <option selected>Select Trainer</option>
+                    {% for p in Trainers %}
+                    <option value="{{p.name}}">{{p.name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+        
+                <div class="form-group">
+                  <input type="text" class="form-control"  name="address" placeholder="Your Address">
+                </div>
+
+                 <div class="form-group ">
+                    <input type="text" class="form-control" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"  name="end_date" placeholder="End Date">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" class="form-control"  name="payment_status" placeholder="Payment_status">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="number" class="form-control"  name="payment_amount" placeholder="Payment_amount">
+                  </div>
+        
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary  " id="sign-btn">Save</button>
+                  </div>
+                
+              </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+   <!-- Edit  members   Modal
+   <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Members</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            {% for member in members %}
+            <form action="/edit_member/{{member.id}}" method="POST">
+                {% csrf_token %}
+                <h2> Welcome to Arshad Fitness </h2>
+        
+                <div class="form-group">
+                  <input type="text" class="form-control" name="fullname" placeholder="Enter your Full Name" value="{{member.fullname}}" required>
+                </div>
+                
+                <div class="form-group ">
+                  <input type="email" class="form-control" aria-describedby="emailHelp" name="email" value="{{member.email}}" placeholder="Enter Email"   required>
+                </div>
+        
+                <div class="form-group ">
+                  <select class="custom-select" name="gender">
+                    <option selected> {{member.gender}}</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+        
+                <div class="form-group ">
+                  <input type="number" class="form-control"  name="phone_no" value="{{member.phone_no}}"  placeholder="Phone Number"   required>
+                </div>
+        
+                <div class="form-group ">
+                  <input type="text" class="form-control"  name="dob" placeholder="date of birth" value="{{member.dob}}">
+                </div>
+        
+                <div class="form-group ">
+                  <select class="custom-select" name="membership_plan">
+                    <option selected>{{member.membership_plan}}</option>
+                    {% for p in membership_plans %}
+                    <option value="{{p.plan}} - {{p.price}}">{{p.plan}} - Rs.{{p.price}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+        
+                <div class="form-group ">
+                  <select class="custom-select" name="trainer">
+                    <option selected>{{member.trainer}}</option>
+                    {% for p in Trainers %}
+                    <option value="{{p.name}}">{{p.name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+        
+                <div class="form-group">
+                  <input type="text" class="form-control"  name="address" placeholder="Your Address" value="{{member.address}}">
+                </div>
+
+                 <div class="form-group ">
+                    <input  class="form-control" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"   name="end_date" placeholder="End Date" value="{{member.end_date}}" required>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" class="form-control"  name="payment_status" placeholder="Payment_status" value="{{member.payment_status}}">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="number" class="form-control"  name="payment_amount" placeholder="Payment_amount" value="{{member.payment_amount}}">
+                  </div>
+        
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="sign-btn">Save </button>
+                  </div>
+                
+                
+              </form>
+              {% endfor %}
+        
+            </div>
+      
+      </div>
+    </div>
+  </div> -->
+
+  <!-- add membership  Modal -->
+  <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Membership Plan</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/add_membership" method="POST">
+                {% csrf_token %}
+                <h2> Welcome to Arshad Fitness </h2>
+        
+                <div class="form-group ">
+                  <input type="text" class="form-control" name="plan" placeholder="Enter Plan Name" required>
+                </div>
+                
+                <div class="form-group">
+                  <input type="text" class="form-control"  name="duration"   placeholder="Enter Duration"   required>
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control"  name="offer"   placeholder="Enter offer"   required>
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control"  name="price"   placeholder="Enter price"   required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary " id="sign-btn">Save</button>
+                  </div>
+                
+              </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+   <!-- Edit membership  Modal   
+  <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Membership Plan</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            {% for membership_plan in membership_plans  %}
+            <form action="/edit_membership/{{membership_plan.id}}" method="POST">
+                {% csrf_token %}
+                <h2> Welcome to Arshad Fitness </h2>
+                <div class="form-group ">
+                  <input type="text" class="form-control" name="plan" placeholder="Enter Plan" value="{{membership_plan.plan}}"  >
+                </div>
+                
+                <div class="form-group">
+                  <input type="text" class="form-control"  name="duration"   placeholder="Enter duration" value="{{membership_plan.duration}}"  >
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control"  name="offer"   placeholder="Enter offer" value="{{membership_plan.offer}}"  >
+                </div> 
+                <div class="form-group">
+                  <input type="number" class="form-control"  name="price"   placeholder="Enter price" value="{{membership_plan.price}}"  >
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" id="sign-btn">Save</button>
+                </div>
+            </form>
+            {% endfor %}
+                </div>
+        </div>  
+      </div>
+    </div>
+   -->
+
+  <!-- add trainer model -->
+  <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Trainers</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/add_trainer" method="POST">
+            {% csrf_token %}
+            <h2> Welcome to BK Fitness </h2>
+    
+            <div class="form-group ">
+              <input type="text" class="form-control" name="name" placeholder="Enter  Name" required>
+            </div>
+               
+            <div class="form-group">
+                <input type="number" class="form-control"  name="phone_no"   placeholder="Phone Number"   required>
+              </div>
+    
+            <div class="form-group">
+              <select class="custom-select" name="gender">
+                <option selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+    
+    
+            <div class="form-group">
+              <input type="number" class="form-control"  name="salary" placeholder="enter salary">
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" id="sign-btn">Save</button>
+            </div>
+            
+        </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+  <!-- edit trainer model
+  <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Trainers</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {% for Trainer in Trainers  %}
+            <form action="/edit_trainer/{{Trainer.id}}" method="POST">
+              {% csrf_token %}
+              <h2> Welcome to Arshad Fitness </h2>
+      
+              <div class="form-group ">
+                <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{Trainer.name}}" required>
+              </div>
+                 
+              <div class="form-group">
+                  <input type="number" class="form-control"  name="phone_no"   placeholder="Phone Number"  value="{{Trainer.phone_no}}" required>
+                </div>
+      
+              <div class="form-group">
+                <select class="custom-select" name="gender">
+                  <option selected>{{Trainer.gender}}</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+      
+      
+              <div class="form-group">
+                <input type="number" class="form-control"  name="salary" placeholder="enter salary" value="{{Trainer.salary}}">
+              </div>
+  
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="sign-btn">Save</button>
+              </div>
+              
+          </form>
+              {% endfor %}
+        </div>
+       
+      </div>
+    </div>
+  </div> -->
+
+
+ 
+   
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

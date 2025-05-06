@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}CONTACT{% endblock title %}
+
+
+{% block body %}
+
+<div class="main-container">
+    <form action="/contact" method="POST">
+        {% csrf_token %}
+        <h2> Contact Us </h2>
+        <div class="form-group">
+          <input type="text" class="form-control" name="fullname" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" name="PhoneNumber" placeholder="Phone Number" required>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="desc" placeholder="Description! How can we help you?" required>
+        </div>
+
+        
+        <button type="submit" class="btn btn-primary btn-block" id="sign-btn">Submit</button>
+        
+      </form>
+</div>
+
+{% endblock body %}

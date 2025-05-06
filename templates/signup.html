@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}SIGNUP{% endblock title %}
+
+
+{% block body %}
+
+<div class="main-container">
+    <form action="/signup" method="POST">
+        {% csrf_token %}
+        <h2>Sign Up Here </h2>
+        <div class="form-group">
+          <input type="number" maxlength="10" class="form-control" placeholder="Phone Number:" name="phoneNumber" required>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email Id:" aria-describedby="emailHelp" name="email" required>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Create Password:" name="pass1" required>
+        </div>
+        <div class="form-group mb-5">
+          <input type="password" class="form-control" placeholder="Confirm Password:" name="pass2" required>
+        </div>
+        
+        
+        <button type="submit" class="btn btn-primary btn-block" id="sign-btn">SignUp</button>
+        
+      </form>
+</div>
+
+{% endblock body %}

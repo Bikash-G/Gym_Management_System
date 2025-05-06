@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}CONTACT{% endblock title %}
+
+
+{% block body %}
+
+<div class="main-container-profile main-container">
+    {% for detail in details %}
+    <ul class="list-group text-dark">
+        <li class="list-group-item">Name: {{detail.fullname}}</li>
+        <li class="list-group-item">Email: {{detail.email}}</li>
+        <li class="list-group-item">Gender: {{detail.gender}}</li>
+        <li class="list-group-item">Phone Number: {{detail.phone_no}}</li>
+        <li class="list-group-item">Date Of Birth: {{detail.dob}}</li>
+        <li class="list-group-item">Trainer: {{detail.trainer}}</li>
+        <li class="list-group-item">Address: {{detail.address}}</li>
+        <li class="list-group-item">Enrollment Date: {{detail.enroll_date}}</li>
+        <li class="list-group-item">Ending Date: {{detail.end_date}}</li>
+        <li class="list-group-item">Payment Status: {{detail.payment_status}}</li>
+        <li class="list-group-item">Payment Amount: {{detail.payment_amount}}</li>
+        
+    </ul>
+    {% endfor %}
+</div>
+
+{% endblock body %}

@@ -1,0 +1,59 @@
+body {
+    background-image: url('../images/gympic4.jpg');
+    background-attachment: fixed;
+   background-size: 100%;
+}
+
+.main-container {
+    height: auto;
+    width: 50%;
+    margin: auto;
+    margin-top: 5em;
+    background-color: rgba(20, 22, 23, 0.5);
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 1rem;
+    color: white;
+}
+
+@media(max-width:1200px){
+    body {
+        background-repeat: repeat;
+    }
+}
+
+@media(max-width:1000px){
+    body {
+        background-repeat: repeat;
+    }
+
+    .main-container {
+        width: 60%;
+    }
+
+    .main-container-about {
+        width: 70%;
+    }
+}
+
+@media(max-width:530px){
+
+    .main-container {
+        width: 80%;
+    }
+
+    .main-container-about {
+        width: 90%;
+    }
+}
+
+@media(max-width:385px){
+
+    .main-container {
+        width: 100%;
+    }
+
+    .main-container-about {
+        width: 95%;
+    }
+}

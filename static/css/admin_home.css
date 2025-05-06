@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3eeee;
+}
+
+header {
+    background-color: #596ac6;
+    color: #eadbe4;
+    padding: 10px 0;
+    text-align: center;
+     
+    
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #adc3f8;
+    text-decoration: double;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    color: #4f70f5;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background-color: #7c4ed2;
+    color: #f0e5e5;
+}
+
+button {
+    background-color: #3B71CA;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+
+button:hover {
+    background-color:  #FF6600 ;
+}
+
+button a:hover {
+    color:  #8d9eb9;
+
+}
+ 
+table a{
+    text-decoration: none;
+    color: white;
+}
+
+#members{
+    overflow-x: scroll;
+}

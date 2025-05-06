@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}PLANS{% endblock title %}
+
+{% block body %}
+
+<div class="plans-container">
+    <div class="cart-container">
+        <div class="plan-heading"><h1>Explore Our Best Gym Plans</h1></div>
+        {% for plan in plans %}
+            <div class="plan-cart">
+                <h2>{{plan.plan}}</h2>
+                <p>Price: Rs.{{plan.price}} only</p>
+                <p>Duration: {{plan.duration}}</p>
+                <p>Offer: {{plan.offer}}% off</p>
+               <a href="/enroll" ><button class="choose-plan-btn">Choose Plan</button></a>
+            </div>
+        {% endfor %}        
+    </div>
+</div>
+
+{% endblock body %}
